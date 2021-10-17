@@ -6,7 +6,13 @@
     expand
   >
     <form
-      class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
+      class="
+        navbar-search navbar-search-dark
+        form-inline
+        mr-3
+        d-none d-md-flex
+        ml-lg-auto
+      "
     >
       <div class="form-group mb-0">
         <base-input
@@ -40,18 +46,6 @@
           <router-link to="/profile" class="dropdown-item">
             <i class="ni ni-single-02"></i>
             <span>My profile</span>
-          </router-link>
-          <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-settings-gear-65"></i>
-            <span>Settings</span>
-          </router-link>
-          <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-calendar-grid-58"></i>
-            <span>Activity</span>
-          </router-link>
-          <router-link to="/profile" class="dropdown-item">
-            <i class="ni ni-support-16"></i>
-            <span>Support</span>
           </router-link>
           <div class="dropdown-divider"></div>
           <router-link to="/profile" class="dropdown-item">
