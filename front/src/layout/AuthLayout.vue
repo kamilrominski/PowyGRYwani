@@ -35,27 +35,9 @@
         <!-- Navbar items -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <router-link class="nav-link nav-link-icon" to="/">
-              <i class="ni ni-planet"></i>
-              <span class="nav-link-inner--text">Dashboard</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
             <router-link class="nav-link nav-link-icon" to="/register">
               <i class="ni ni-circle-08"></i>
               <span class="nav-link-inner--text">Register</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link nav-link-icon" to="/login">
-              <i class="ni ni-key-25"></i>
-              <span class="nav-link-inner--text">Login</span>
-            </router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link nav-link-icon" to="/profile">
-              <i class="ni ni-single-02"></i>
-              <span class="nav-link-inner--text">Profile</span>
             </router-link>
           </li>
         </ul>
@@ -112,32 +94,13 @@
           </div>
           <div class="col-xl-6">
             <ul
-              class="nav nav-footer justify-content-center justify-content-xl-end"
+              class="
+                nav nav-footer
+                justify-content-center justify-content-xl-end
+              "
             >
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com"
-                  class="nav-link"
-                  target="_blank"
-                  >Creative Tim</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/presentation"
-                  class="nav-link"
-                  target="_blank"
-                  >About Us</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  href="https://www.creative-tim.com/blog"
-                  class="nav-link"
-                  target="_blank"
-                  >Blog</a
-                >
-              </li>
+              <li class="nav-item"></li>
+
               <li class="nav-item">
                 <a
                   href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
