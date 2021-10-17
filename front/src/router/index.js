@@ -8,6 +8,7 @@ import Icons from "../views/Icons.vue";
 import Maps from "../views/Maps.vue";
 import Profile from "../views/UserProfile.vue";
 import Tables from "../views/Tables.vue";
+import ProfileEdit from "../views/UserProfileEdit.vue";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
@@ -37,6 +38,11 @@ const routes = [
         path: "/profile",
         name: "profile",
         components: { default: Profile },
+      },
+      {
+        path: "/profileEdit",
+        name: "profileEdit",
+        components: { default: ProfileEdit },
       },
       {
         path: "/tables",
