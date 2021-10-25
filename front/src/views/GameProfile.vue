@@ -89,7 +89,6 @@
 </template>
 <script>
 export default {
-  name: "user-profile",
   data() {
     return {
       model: {
