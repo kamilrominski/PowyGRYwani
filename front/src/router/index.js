@@ -12,7 +12,7 @@ import Register from "../views/Register.vue";
 const routes = [
   {
     path: "/",
-    redirect: "/dashboard",
+    redirect: "/profile",
     component: DashboardLayout,
     children: [
       {
