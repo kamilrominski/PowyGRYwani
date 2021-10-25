@@ -9,6 +9,8 @@ import ProfileEdit from "../views/UserProfileEdit.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 
+import GameProfile from "../views/GameProfile.vue";
+
 const routes = [
   {
     path: "/",
@@ -38,7 +40,7 @@ const routes = [
       {
         path: "/game",
         name: "game",
-        components: { default: Profile },
+        components: { default: GameProfile },
       },
       {
         path: "/gameEdit",
