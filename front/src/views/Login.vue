@@ -14,18 +14,15 @@
 
             <base-input
               formClasses="input-group-alternative mb-3"
-              placeholder="Password"
+              placeholder="Hasło"
               type="password"
               addon-left-icon="ni ni-lock-circle-open"
               v-model="model.password"
             >
             </base-input>
 
-            <base-checkbox class="custom-control-alternative">
-              <span class="text-muted">Remember me</span>
-            </base-checkbox>
             <div class="text-center">
-              <base-button type="primary" class="my-4">Sign in</base-button>
+              <base-button type="primary" class="my-4">Zaloguj się</base-button>
             </div>
           </form>
         </div>
@@ -33,8 +30,8 @@
       <div class="row mt-3">
         <div class="col-6">
           <router-link to="/register" class="text-light"
-            ><small>Create new account</small></router-link
-          >
+            ><small>Stwórz konto</small>
+          </router-link>
         </div>
       </div>
     </div>
