@@ -33,7 +33,12 @@
               <div class="row">
                 <div class="col">
                   <div
-                    class="card-profile-stats d-flex justify-content-center mt-md-5"
+                    class="
+                      card-profile-stats
+                      d-flex
+                      justify-content-center
+                      mt-md-5
+                    "
                   ></div>
                 </div>
               </div>
@@ -95,11 +100,20 @@ export default {
         name: "Gothic 3",
         description:
           "Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry",
-        studio: { name: "Super studio" },
-        series: { name: "Gothic" },
-        languages: [{ name: "PL" }, { name: "DE" }],
-        platforms: [{ name: "PS3" }, { name: "PC" }],
-        tags: [{ name: "Mrok" }, { name: "RPG" }],
+        studio: { name: "Super studio", id: "23" },
+        series: { name: "Gothic", id: "24" },
+        languages: [
+          { name: "PL", id: "25" },
+          { name: "DE", id: "26" },
+        ],
+        platforms: [
+          { name: "PS3", id: "43" },
+          { name: "PC", id: "73" },
+        ],
+        tags: [
+          { name: "Mrok", id: "73" },
+          { name: "RPG", id: "72" },
+        ],
       },
     };
   },
