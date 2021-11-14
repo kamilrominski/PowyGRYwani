@@ -2,25 +2,14 @@
   <div>
     <base-header
       class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-      style="
-        min-height: 600px;
-        background-image: url(img/theme/profile-cover.jpg);
-        background-size: cover;
-        background-position: center top;
-      "
+      style="background-size: cover; background-position: center top"
     >
       <!-- Mask -->
       <span class="mask bg-gradient-success opacity-8"></span>
       <!-- Header container -->
       <div class="container-fluid d-flex align-items-center">
         <div class="row">
-          <div class="col-lg-7 col-md-10">
-            <h1 class="display-2 text-white">Hello Jesse</h1>
-            <p class="text-white mt-0 mb-5">
-              This is your profile page. You can see the progress you've made
-              with your work and manage your projects or assigned tasks
-            </p>
-          </div>
+          <div class="col-lg-7 col-md-10"></div>
         </div>
       </div>
     </base-header>
@@ -29,45 +18,16 @@
       <div class="row">
         <div class="col-12">
           <card shadow type="secondary">
-            <template v-slot:header>
-              <div class="bg-white border-0">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">My account</h3>
-                  </div>
-                </div>
-              </div>
-            </template>
-
             <form>
-              <h6 class="heading-small text-muted mb-4">User information</h6>
+              <h6 class="heading-small text-muted mb-4">
+                Informacje o użytkowniku
+              </h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <base-input
                       alternative=""
-                      label="Username"
-                      placeholder="Username"
-                      input-classes="form-control-alternative"
-                      v-model="model.username"
-                    />
-                  </div>
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Email address"
-                      placeholder="jesse@example.com"
-                      input-classes="form-control-alternative"
-                      v-model="model.email"
-                    />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="First name"
-                      placeholder="First name"
+                      label="Imię"
                       input-classes="form-control-alternative"
                       v-model="model.firstName"
                     />
@@ -75,14 +35,24 @@
                   <div class="col-lg-6">
                     <base-input
                       alternative=""
-                      label="Last name"
-                      placeholder="Last name"
+                      label="Nazwisko"
                       input-classes="form-control-alternative"
                       v-model="model.lastName"
                     />
                   </div>
                 </div>
-                <a href="#!" class="btn btn-info">Edit profile</a>
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <base-input
+                      alternative=""
+                      label="Email"
+                      input-classes="form-control-alternative"
+                      v-model="model.email"
+                    />
+                  </div>
+                </div>
+                <a href="#!" class="btn btn-info">Edytuj profil</a>
               </div>
             </form>
           </card>

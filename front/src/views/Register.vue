@@ -6,12 +6,19 @@
           <form role="form">
             <base-input
               formClasses="input-group-alternative"
-              placeholder="Name"
-              addon-left-icon="ni ni-hat-3"
+              placeholder="Imię"
               v-model="model.name"
+              focused
             >
             </base-input>
 
+            <base-input
+              formClasses="input-group-alternative"
+              placeholder="Nazwisko"
+              v-model="model.surname"
+              focused
+            >
+            </base-input>
             <base-input
               formClasses="input-group-alternative"
               placeholder="Email"
@@ -23,33 +30,35 @@
 
             <base-input
               formClasses="input-group-alternative"
-              placeholder="Password"
+              placeholder="Hasło"
               type="password"
               addon-left-icon="ni ni-lock-circle-open"
               v-model="model.password"
             >
             </base-input>
 
-            <div class="text-muted font-italic">
+            <base-input
+              formClasses="input-group-alternative"
+              placeholder="Powtórz hasło"
+              type="password"
+              addon-left-icon="ni ni-lock-circle-open"
+              v-model="model.password2"
+            >
+            </base-input>
+
+            <!-- Disabled for now -->
+            <!-- <div class="text-muted font-italic">
               <small
                 >password strength:
                 <span class="text-success font-weight-700">strong</span></small
               >
-            </div>
+            </div> -->
 
-            <div class="row my-4">
-              <div class="col-12">
-                <base-checkbox class="custom-control-alternative">
-                  <span class="text-muted"
-                    >I agree with the <a href="#!">Privacy Policy</a></span
-                  >
-                </base-checkbox>
-              </div>
-            </div>
+            <div class="row my-4"></div>
             <div class="text-center">
-              <base-button type="primary" class="my-4"
-                >Create account</base-button
-              >
+              <base-button type="primary" class="my-4">
+                Stwórz konto
+              </base-button>
             </div>
           </form>
         </div>
@@ -57,7 +66,7 @@
       <div class="row mt-3">
         <div class="col-6">
           <router-link to="/login" class="text-light">
-            <small>Login into your account</small>
+            <small>Zaloguj się na swoje konto</small>
           </router-link>
         </div>
       </div>
@@ -70,9 +79,10 @@ export default {
   data() {
     return {
       model: {
-        name: "",
         email: "",
-        password: "",
+        name: "",
+        surname: "",
+        password2: "",
       },
     };
   },

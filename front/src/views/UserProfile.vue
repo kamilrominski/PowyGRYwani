@@ -36,25 +36,26 @@
               <div class="row">
                 <div class="col">
                   <div
-                    class="card-profile-stats d-flex justify-content-center mt-md-5"
+                    class="
+                      card-profile-stats
+                      d-flex
+                      justify-content-center
+                      mt-md-5
+                    "
                   >
-                    <div>
-                      <span class="heading">22</span>
-                      <span class="description">Friends</span>
-                    </div>
-                    <div>
-                      <span class="heading">10</span>
-                      <span class="description">Photos</span>
-                    </div>
-                    <div>
+                    <!-- TODO to implement in api -->
+                    <!-- <div>
                       <span class="heading">89</span>
                       <span class="description">Comments</span>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
               <div class="text-center">
-                <h3>Jessica Jones<span class="font-weight-light"></span></h3>
+                <h3>
+                  {{ `${model.firstName} ${model.lastName}` }} <br />
+                  <span class="font-weight-light">{{ model.email }}</span>
+                </h3>
               </div>
             </div>
           </div>
@@ -69,10 +70,9 @@ export default {
   data() {
     return {
       model: {
-        username: "",
-        email: "",
-        firstName: "",
-        lastName: "",
+        email: "test@test.pl",
+        firstName: "Jan",
+        lastName: "Kowalski",
       },
     };
   },

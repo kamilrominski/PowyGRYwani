@@ -49,11 +49,7 @@
         <div class="header-body text-center mb-7">
           <div class="row justify-content-center">
             <div class="col-lg-5 col-md-6">
-              <h1 class="text-white">Welcome!</h1>
-              <p class="text-lead text-white">
-                Use these awesome forms to login or create new account in your
-                project for free.
-              </p>
+              <h1 class="text-white">Witaj!</h1>
             </div>
           </div>
         </div>
