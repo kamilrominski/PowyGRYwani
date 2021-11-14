@@ -16,7 +16,7 @@
     >
       <div class="form-group mb-0">
         <base-input
-          placeholder="Search"
+          placeholder="Szukaj"
           class="input-group-alternative"
           alternative=""
           addon-right-icon="fas fa-search"
@@ -79,3 +79,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.input-group-alternative {
+  color: red !important;
+}
+</style>
