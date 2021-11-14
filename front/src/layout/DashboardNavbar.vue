@@ -7,7 +7,7 @@
   >
     <form
       class="
-        navbar-search navbar-search-dar
+        navbar-search navbar-search-dark
         form-inline
         mr-3
         d-none d-md-flex

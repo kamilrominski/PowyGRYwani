@@ -3,7 +3,7 @@
     <!-- Navbar -->
     <base-nav
       class="navbar-top navbar-horizontal navbar-dark"
-      containerClasses="px-4 container "
+      containerClasses="px-4 container"
       expand
     >
       <!-- <router-link slot="brand" class="navbar-brand" to="/">
@@ -84,7 +84,10 @@
           </div>
           <div class="col-xl-6">
             <ul
-              class="nav nav-footer justify-content-center justify-content-xl-end"
+              class="
+                nav nav-footer
+                justify-content-center justify-content-xl-end
+              "
             >
               <li class="nav-item"></li>
 

@@ -29,8 +29,8 @@
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <router-link to="/register" class="text-light"
-            ><small>Stwórz konto</small>
+          <router-link to="/register" class="text-light">
+            <small>Stwórz konto</small>
           </router-link>
         </div>
       </div>
