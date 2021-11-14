@@ -6,6 +6,21 @@
           <form role="form">
             <base-input
               formClasses="input-group-alternative"
+              placeholder="Imię"
+              v-model="model.name"
+              focused
+            >
+            </base-input>
+
+            <base-input
+              formClasses="input-group-alternative"
+              placeholder="Nazwisko"
+              v-model="model.surname"
+              focused
+            >
+            </base-input>
+            <base-input
+              formClasses="input-group-alternative"
               placeholder="Email"
               addon-left-icon="ni ni-email-83"
               v-model="model.email"
@@ -65,6 +80,8 @@ export default {
     return {
       model: {
         email: "",
+        name: "",
+        surname: "",
         password2: "",
       },
     };
