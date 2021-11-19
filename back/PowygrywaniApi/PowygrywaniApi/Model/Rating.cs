@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PowygrywaniApi.Model.Templates;
 
 namespace PowygrywaniApi.Model
 {
-    public class Rating : ModelTemplate
+    public class Rating : ModelIdTemplate
     {
         public int Rate { get; set; }
         public int User_id { get; set; }

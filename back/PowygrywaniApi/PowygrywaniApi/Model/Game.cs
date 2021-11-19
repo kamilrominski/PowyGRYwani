@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using PowygrywaniApi.Model.Templates;
 
 namespace PowygrywaniApi.Model
 {
-    public class Game : ModelTemplate
+    public class Game : BaseModelTemplate
     {
         public string? Description { get; set; }
         public int Studio_id { get; set; }
