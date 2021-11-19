@@ -1,8 +1,7 @@
 ﻿namespace PowygrywaniApi.Model
 {
-    public class ModelTemplate
+    public class ModelIdTemplate
     {
         public long Id { get; set; }
-        public string? Name { get; set; }
     }
 }
