@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PowygrywaniApi.Model;
-using PowygrywaniApi.Service;
 
 namespace PowygrywaniApi.Controllers
 {
@@ -14,25 +13,32 @@ namespace PowygrywaniApi.Controllers
     [ApiController]
     public class GamesController : ControllerBase
     {
-        private GameService _gameService;
+        private readonly ModelContext _context;
 
-        public GamesController(GameService gameService)
+        public GamesController(ModelContext context)
         {
-           _gameService = gameService;
+            _context = context;
         }
 
         // GET: api/Games
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Game>>> Getgames()
         {
-            return await _gameService.GetGames();
+            return await _context.games.ToListAsync();
         }
 
         // GET: api/Games/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Game>> GetGameById(long id)
+        public async Task<ActionResult<Game>> GetGame(long id)
         {
-            return await _gameService.GetGameById(id);
+            var game = await _context.games.FindAsync(id);
+
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            return game;
         }
 
         // PUT: api/Games/5
@@ -40,24 +46,62 @@ namespace PowygrywaniApi.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutGame(long id, Game game)
         {
-            return await _gameService.PutGame(id, game);
+            if (id != game.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(game).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!GameExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
         // POST: api/Games
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Game>> AddGame(Game game)
+        public async Task<ActionResult<Game>> PostGame(Game game)
         {
-            return await _gameService.PostGame(game);
+            _context.games.Add(game);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetGame", new { id = game.Id }, game);
         }
 
         // DELETE: api/Games/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGame(long id)
         {
-            return await _gameService.DeleteGameById(id);
+            var game = await _context.games.FindAsync(id);
+            if (game == null)
+            {
+                return NotFound();
+            }
+
+            _context.games.Remove(game);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
-        
+        private bool GameExists(long id)
+        {
+            return _context.games.Any(e => e.Id == id);
+        }
     }
 }
