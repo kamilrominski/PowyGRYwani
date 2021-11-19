@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace PowygrywaniApi.Model
 {
-    public class Game
+    public class Game : ModelTemplate
     {
-        public long Id { get; set; }
-        public string? Name { get; set; }
         public string? Description { get; set; }
         public int Studio_id { get; set; }
         public int Series_id { get; set; }

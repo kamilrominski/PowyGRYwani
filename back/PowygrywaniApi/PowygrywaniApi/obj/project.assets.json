@@ -9754,24 +9754,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kamil\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\krominsx\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kamil\\source\\repos\\PowygrywaniApi\\PowygrywaniApi\\PowygrywaniApi.csproj",
+      "projectUniqueName": "C:\\Users\\krominsx\\Documents\\GitHub\\PowyGRYwani\\back\\PowygrywaniApi\\PowygrywaniApi\\PowygrywaniApi.csproj",
       "projectName": "PowygrywaniApi",
-      "projectPath": "C:\\Users\\kamil\\source\\repos\\PowygrywaniApi\\PowygrywaniApi\\PowygrywaniApi.csproj",
-      "packagesPath": "C:\\Users\\kamil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kamil\\source\\repos\\PowygrywaniApi\\PowygrywaniApi\\obj\\",
+      "projectPath": "C:\\Users\\krominsx\\Documents\\GitHub\\PowyGRYwani\\back\\PowygrywaniApi\\PowygrywaniApi\\PowygrywaniApi.csproj",
+      "packagesPath": "C:\\Users\\krominsx\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\krominsx\\Documents\\GitHub\\PowyGRYwani\\back\\PowygrywaniApi\\PowygrywaniApi\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\kamil\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\krominsx\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

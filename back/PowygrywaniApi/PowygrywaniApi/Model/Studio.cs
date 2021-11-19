@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 
 namespace PowygrywaniApi.Model
 {
-    public class Studio
+    public class Studio : ModelTemplate
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
         public string Description { get; set; }
-
     }
 }
