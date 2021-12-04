@@ -3,7 +3,7 @@
     <!-- Navbar -->
     <base-nav
       class="navbar-top navbar-horizontal navbar-dark"
-      containerClasses="px-4 container "
+      containerClasses="px-4 container"
       expand
     >
       <!-- <router-link slot="brand" class="navbar-brand" to="/">
@@ -87,15 +87,6 @@
               class="nav nav-footer justify-content-center justify-content-xl-end"
             >
               <li class="nav-item"></li>
-
-              <li class="nav-item">
-                <a
-                  href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
-                  class="nav-link"
-                  target="_blank"
-                  >MIT License</a
-                >
-              </li>
             </ul>
           </div>
         </div>
