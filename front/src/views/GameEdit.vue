@@ -25,28 +25,28 @@
                   <div class="col-lg-6">
                     <base-input
                       alternative=""
-                      label="Imię"
+                      label="Nazwa"
                       input-classes="form-control-alternative"
                       v-model="model.name"
                     />
                   </div>
                   <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Nazwisko"
-                      input-classes="form-control-alternative"
-                      v-model="model.lastName"
-                    />
+                    <!-- <v-select
+                      label="Seria"
+                      v-model="model.series_id"
+                      :reduce="(studio) => studio.id"
+                      :options="series"
+                    /> -->
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-12">
-                    <base-input
-                      alternative=""
-                      label="Opis"
-                      input-classes="form-control-alternative"
+                  <div class="col-lg-12 mb-3">
+                    <label><b>Opis</b></label>
+                    <textarea
                       v-model="model.description"
+                      class="form-control"
+                      rows="3"
                     />
                   </div>
                 </div>
@@ -61,29 +61,40 @@
 </template>
 <script>
 export default {
+  components: {},
   data() {
     return {
+      // TODO  Get from API
+      languages: [
+        { name: "PL", id: 25 },
+        { name: "DE", id: 26 },
+      ],
+      platforms: [
+        { name: "PS3", id: 43 },
+        { name: "PC", id: 73 },
+      ],
+      tags: [
+        { name: "Mrok", id: 73 },
+        { name: "RPG", id: 72 },
+      ],
+      studies: [
+        { name: "Super studio", id: 23 },
+        { name: "Super studio 2", id: 25 },
+      ],
+      series: [
+        { name: "Animal crossing", id: 22 },
+        { name: "Gothic", id: 24 },
+      ],
+
       model: {
+        id: 1,
         name: "Gothic 3",
         description:
           "Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry",
-        studio: { name: "Super studio", id: "23" },
-        series: { name: "Gothic", id: "24" },
-        languages: [
-          { name: "PL", id: "25" },
-          { name: "DE", id: "26" },
-        ],
-        platforms: [
-          { name: "PS3", id: "43" },
-          { name: "PC", id: "73" },
-        ],
-        tags: [
-          { name: "Mrok", id: "73" },
-          { name: "RPG", id: "72" },
-        ],
+        studio_id: 23,
+        series_id: 24,
       },
     };
   },
 };
 </script>
-<style></style>
