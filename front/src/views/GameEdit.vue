@@ -31,12 +31,11 @@
                     />
                   </div>
                   <div class="col-lg-6">
-                    <!-- <v-select
+                    <base-select
+                      :model="model.studio_id"
                       label="Seria"
-                      v-model="model.series_id"
-                      :reduce="(studio) => studio.id"
                       :options="series"
-                    /> -->
+                    />
                   </div>
                 </div>
 
@@ -60,8 +59,9 @@
   </div>
 </template>
 <script>
+import BaseSelect from "../components/BaseSelect.vue";
 export default {
-  components: {},
+  components: { BaseSelect },
   data() {
     return {
       // TODO  Get from API
@@ -83,7 +83,7 @@ export default {
       ],
       series: [
         { name: "Animal crossing", id: 22 },
-        { name: "Gothic", id: 24 },
+        { name: "Gothic", id: 23 },
       ],
 
       model: {
