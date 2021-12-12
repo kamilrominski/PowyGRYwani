@@ -1,18 +1,15 @@
 <template>
-  <div
-    class="custom-control custom-checkbox"
-    :class="{ disabled: disabled, 'form-check-inline': inline }"
-  >
+  <div class="form-check form-check-inline">
     <input
       :id="cbId"
-      class="custom-control-input"
+      class="form-check-input"
       type="checkbox"
       :disabled="disabled"
       v-model="model"
     />
-    <label :for="cbId" class="custom-control-label">
+    <label :for="cbId" class="form-check-label">
       <slot>
-        <span v-if="inline">&nbsp;</span>
+        <span>&nbsp;</span>
       </slot>
     </label>
   </div>
@@ -33,10 +30,6 @@ export default {
     disabled: {
       type: Boolean,
       description: "Whether checkbox is disabled",
-    },
-    inline: {
-      type: Boolean,
-      description: "Whether checkbox is inline",
     },
   },
   data() {
