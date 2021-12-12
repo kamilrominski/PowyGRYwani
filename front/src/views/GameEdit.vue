@@ -32,7 +32,7 @@
                   </div>
                   <div class="col-lg-6">
                     <base-select
-                      :model="model.studio_id"
+                      :model="model.series_id"
                       label="Seria"
                       :options="series"
                     />
@@ -40,8 +40,35 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-12 mb-3">
-                    <label><b>Opis</b></label>
+                  <div class="col-lg-6">
+                    <base-select
+                      :model="model.studio_id"
+                      label="Seria"
+                      :options="studies"
+                    />
+                  </div>
+
+                  <div class="col-lg-6">
+                    <base-checkbox-form label="Język" :options="languages" />
+                  </div>
+                </div>
+
+                <div class="row mt-3">
+                  <div class="col-lg-6">
+                    <base-checkbox-form
+                      label="Platforma"
+                      :options="platforms"
+                    />
+                  </div>
+
+                  <div class="col-lg-6">
+                    <base-checkbox-form label="Tag" :options="tags" />
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-12 mt-3">
+                    <label class="form-control-label">Opis</label>
                     <textarea
                       v-model="model.description"
                       class="form-control"
@@ -49,7 +76,8 @@
                     />
                   </div>
                 </div>
-                <a href="#!" class="btn btn-info">Edytuj grę</a>
+
+                <a href="#!" class="btn btn-info mt-2">Edytuj grę</a>
               </div>
             </form>
           </card>
@@ -59,15 +87,15 @@
   </div>
 </template>
 <script>
-import BaseSelect from "../components/BaseSelect.vue";
 export default {
-  components: { BaseSelect },
   data() {
     return {
       // TODO  Get from API
       languages: [
         { name: "PL", id: 25 },
         { name: "DE", id: 26 },
+        { name: "CN", id: 27 },
+        { name: "ES", id: 28 },
       ],
       platforms: [
         { name: "PS3", id: 43 },
@@ -92,7 +120,7 @@ export default {
         description:
           "Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry",
         studio_id: 23,
-        series_id: 24,
+        series_id: 23,
       },
     };
   },

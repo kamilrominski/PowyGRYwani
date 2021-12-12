@@ -17,6 +17,7 @@ import StatsCard from "../components/StatsCard";
 import TabPane from "../components/Tabs/TabPane";
 import Tabs from "../components/Tabs/Tabs";
 import BaseSelect from "../components/BaseSelect";
+import BaseCheckboxForm from "../components/BaseCheckboxForm";
 
 import { ElTooltip, ElPopover } from "element-plus";
 
@@ -41,6 +42,7 @@ const GlobalComponents = {
     app.component("tab-pane", TabPane);
     app.component("tabs", Tabs);
     app.component("base-select", BaseSelect);
+    app.component("base-checkbox-form", BaseCheckboxForm);
     app.use(ElTooltip);
     app.use(ElPopover);
   },
