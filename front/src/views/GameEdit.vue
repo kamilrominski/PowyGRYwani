@@ -43,7 +43,7 @@
                   <div class="col-lg-6">
                     <base-select
                       :model="model.studio_id"
-                      label="Seria"
+                      label="Studio"
                       :options="studies"
                     />
                   </div>
