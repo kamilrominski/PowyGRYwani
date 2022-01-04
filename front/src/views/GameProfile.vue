@@ -117,6 +117,16 @@ export default {
       },
     };
   },
+  methods: {
+    getGame() {
+      this.axios.get("/games").then((response) => {
+        console.log(response.data);
+      });
+    },
+  },
+  created() {
+    this.getGame();
+  },
 };
 </script>
 <style></style>
