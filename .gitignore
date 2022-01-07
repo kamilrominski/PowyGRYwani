@@ -1,2 +1,3 @@
-back/PowygrywaniApi/PowygrywaniApi/bin/*
-back/PowygrywaniApi/PowygrywaniApi/obj/*
+backend/.vs/*
+backend/PowygrywaniApi/bin/*
+backend/PowygrywaniApi/obj/*
