@@ -29,7 +29,7 @@ namespace PowygrywaniApi.Controllers
 
         // GET: api/Games/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Game>> GetGame(long id)
+        public async Task<ActionResult<Game>> GetGame(int id)
         {
             var game = await _context.games.FindAsync(id);
 
@@ -44,7 +44,7 @@ namespace PowygrywaniApi.Controllers
         // PUT: api/Games/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutGame(long id, Game game)
+        public async Task<IActionResult> PutGame(int id, Game game)
         {
             if (id != game.Id)
             {
@@ -85,7 +85,7 @@ namespace PowygrywaniApi.Controllers
 
         // DELETE: api/Games/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteGame(long id)
+        public async Task<IActionResult> DeleteGame(int id)
         {
             var game = await _context.games.FindAsync(id);
             if (game == null)
@@ -99,7 +99,7 @@ namespace PowygrywaniApi.Controllers
             return NoContent();
         }
 
-        private bool GameExists(long id)
+        private bool GameExists(int id)
         {
             return _context.games.Any(e => e.Id == id);
         }
