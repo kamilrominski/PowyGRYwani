@@ -80,6 +80,21 @@
                   <p>{{ model.description }}</p>
                 </h3>
               </div>
+              <div class="row float-right">
+                <router-link
+                  :to="{ name: 'gameEdit', params: { id: model.id } }"
+                  class="btn btn-info mt-2"
+                >
+                  Edytuj grę
+                </router-link>
+
+                <router-link
+                  :to="{ name: 'gameEdit', params: { id: 'new' } }"
+                  class="btn btn-primary mt-2"
+                >
+                  Dodaj grę
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
