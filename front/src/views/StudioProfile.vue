@@ -18,10 +18,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <img
-                    src="img/theme/team-4-800x800.jpg"
-                    class="rounded-circle"
-                  />
+                  <img src="img/theme/studio.jpg" class="rounded-circle" />
                 </div>
               </div>
             </div>
@@ -69,12 +66,12 @@
 </template>
 <script>
 export default {
-  name: "user-profile",
+  name: "studio-profile",
   data() {
     return {
       model: {
         name: "",
-        surname: "",
+        description: "",
       },
     };
   },
