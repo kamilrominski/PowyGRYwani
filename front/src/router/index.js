@@ -44,7 +44,7 @@ const routes = [
         components: { default: GameProfile },
       },
       {
-        path: "/gameEdit",
+        path: "/gameEdit/:id",
         name: "gameEdit",
         components: { default: GameEdit },
       },

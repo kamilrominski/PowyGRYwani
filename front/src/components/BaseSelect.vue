@@ -35,9 +35,9 @@ export default {
         );
       }
     },
-  },
-  created() {
-    this.localModel = this.modelValue;
+    modelValue() {
+      this.localModel = this.modelValue;
+    },
   },
 };
 </script>
