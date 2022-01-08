@@ -33,12 +33,7 @@
               <div class="row">
                 <div class="col">
                   <div
-                    class="
-                      card-profile-stats
-                      d-flex
-                      justify-content-center
-                      mt-md-5
-                    "
+                    class="card-profile-stats d-flex justify-content-center mt-md-5"
                   ></div>
                 </div>
               </div>
@@ -119,8 +114,16 @@ export default {
   },
   methods: {
     getGame() {
-      this.axios.get("/games").then((response) => {
-        console.log(response.data);
+      this.axios.get("/games/3").then((game) => {
+        this.model = { ...this.model, ...game.data };
+
+        this.axios.get(`/studios/${game.data.studio_id}`).then((studio) => {
+          this.model.studio = studio;
+        });
+
+        this.axios.get(`/series/${game.data.series_id}`).then((series) => {
+          this.model.series = series;
+        });
       });
     },
   },
