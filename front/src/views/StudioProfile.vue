@@ -18,10 +18,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <img
-                    src="img/theme/team-4-800x800.jpg"
-                    class="rounded-circle"
-                  />
+                  <img src="img/theme/studio.jpg" class="rounded-circle" />
                 </div>
               </div>
             </div>
@@ -35,28 +32,29 @@
                 <div class="col">
                   <div
                     class="card-profile-stats d-flex justify-content-center mt-md-5"
-                  >
-                    <!-- TODO to implement in api -->
-                    <!-- <div>
-                      <span class="heading">89</span>
-                      <span class="description">Comments</span>
-                    </div> -->
-                  </div>
+                  ></div>
                 </div>
               </div>
               <div class="text-center">
                 <h3>
-                  {{ `${model.name} ${model.surname}` }} <br />
-                  <span class="font-weight-light">{{ model.email }}</span>
+                  {{ model.name }} <br />
+                  <span class="font-weight-light">{{ model.description }}</span>
                 </h3>
               </div>
 
               <div class="row float-right">
                 <router-link
-                  :to="{ name: 'profileEdit', params: { id: model.id } }"
+                  :to="{ name: 'studioEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
                 >
-                  Edytuj profil
+                  Edytuj studio
+                </router-link>
+
+                <router-link
+                  :to="{ name: 'studioEdit', params: { id: 'new' } }"
+                  class="btn btn-primary mt-2"
+                >
+                  Dodaj studio
                 </router-link>
               </div>
             </div>
@@ -68,25 +66,24 @@
 </template>
 <script>
 export default {
-  name: "user-profile",
+  name: "studio-profile",
   data() {
     return {
       model: {
-        email: "",
         name: "",
-        surname: "",
+        description: "",
       },
     };
   },
   methods: {
-    getProfile() {
-      this.axios.get(`/users/${this.$route.params.id}`).then((user) => {
-        this.model = { ...this.model, ...user.data };
+    getStudio() {
+      this.axios.get(`/studios/${this.$route.params.id}`).then((studio) => {
+        this.model = { ...this.model, ...studio.data };
       });
     },
   },
   created() {
-    this.getProfile();
+    this.getStudio();
   },
 };
 </script>

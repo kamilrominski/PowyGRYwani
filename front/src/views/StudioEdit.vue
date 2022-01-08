@@ -19,42 +19,33 @@
         <div class="col-12">
           <card shadow type="secondary">
             <form>
-              <h6 class="heading-small text-muted mb-4">
-                Informacje o użytkowniku
-              </h6>
+              <h6 class="heading-small text-muted mb-4">Informacje o studiu</h6>
               <div class="pl-lg-4">
                 <div class="row">
                   <div class="col-lg-6">
                     <base-input
                       alternative=""
-                      label="Imię"
+                      label="Nazwa"
                       input-classes="form-control-alternative"
                       v-model="model.name"
-                    />
-                  </div>
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Nazwisko"
-                      input-classes="form-control-alternative"
-                      v-model="model.surname"
                     />
                   </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-lg-6">
-                    <base-input
-                      alternative=""
-                      label="Email"
-                      input-classes="form-control-alternative"
-                      v-model="model.email"
+                  <div class="col-lg-12 mb-3">
+                    <label class="form-control-label">Opis</label>
+                    <textarea
+                      v-model="model.description"
+                      class="form-control"
+                      rows="3"
                     />
                   </div>
                 </div>
-                <a href="#!" class="btn btn-info" @click.prevent="submit"
-                  >Edytuj profil</a
-                >
+
+                <a class="btn btn-info" @click.prevent="submit">
+                  {{ isEdit ? "Edytuj studio" : "Dodaj studio" }}
+                </a>
               </div>
             </form>
           </card>
@@ -69,28 +60,44 @@ export default {
   data() {
     return {
       model: {
-        email: "",
         name: "",
-        surname: "",
+        description: "",
       },
     };
   },
 
+  computed: {
+    isEdit() {
+      return this.$route.params.id !== "new";
+    },
+  },
+
   methods: {
-    getProfile() {
-      this.axios.get(`/users/${this.$route.params.id}`).then((profile) => {
-        this.model = { ...this.model, ...profile.data };
+    getStudio() {
+      this.axios.get(`/studios/${this.$route.params.id}`).then((studio) => {
+        this.model = { ...this.model, ...studio.data };
       });
     },
+
     submit() {
-      this.axios.put(`/users/${this.$route.params.id}`, this.model).then(() => {
-        alert("Profil zaktualizowany");
-      });
+      if (this.isEdit) {
+        this.axios
+          .put(`/studios/${this.$route.params.id}`, this.model)
+          .then(() => {
+            alert("Studio zaktualizowe");
+          });
+      } else {
+        this.axios.post(`/studios`, this.model).then((studio) => {
+          this.$router.push({ name: "studio", params: { id: studio.data.id } });
+        });
+      }
     },
   },
 
   created() {
-    this.getProfile();
+    if (this.isEdit) {
+      this.getStudio();
+    }
   },
 };
 </script>

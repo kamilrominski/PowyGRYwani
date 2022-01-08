@@ -10,7 +10,10 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 
 import GameProfile from "../views/GameProfile.vue";
-import GameEdit from "../views/GameEdit.vue"
+import GameEdit from "../views/GameEdit.vue";
+
+import StudioProfile from "../views/StudioProfile.vue";
+import StudioEdit from "../views/StudioEdit.vue";
 
 const routes = [
   {
@@ -19,32 +22,32 @@ const routes = [
     component: DashboardLayout,
     children: [
       {
-        path: "/profile",
+        path: "/profile/:id",
         name: "profile",
         components: { default: Profile },
       },
       {
-        path: "/profileEdit",
+        path: "/profileEdit/:id",
         name: "profileEdit",
         components: { default: ProfileEdit },
       },
       {
-        path: "/studio",
+        path: "/studio/:id",
         name: "studio",
-        components: { default: Profile },
+        components: { default: StudioProfile },
       },
       {
-        path: "/studioEdit",
+        path: "/studioEdit/:id",
         name: "studioEdit",
-        components: { default: ProfileEdit },
+        components: { default: StudioEdit },
       },
       {
-        path: "/game",
+        path: "/game/:id",
         name: "game",
         components: { default: GameProfile },
       },
       {
-        path: "/gameEdit",
+        path: "/gameEdit/:id",
         name: "gameEdit",
         components: { default: GameEdit },
       },

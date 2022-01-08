@@ -35,6 +35,7 @@
                       :model="model.series_id"
                       label="Seria"
                       :options="series"
+                      @update="model.series_id = $event"
                     />
                   </div>
                 </div>
@@ -44,7 +45,8 @@
                     <base-select
                       :model="model.studio_id"
                       label="Studio"
-                      :options="studies"
+                      :options="studios"
+                      @update="model.studio_id = $event"
                     />
                   </div>
 
@@ -77,7 +79,9 @@
                   </div>
                 </div>
 
-                <a href="#!" class="btn btn-info mt-2">Edytuj grę</a>
+                <a href="#!" class="btn btn-info mt-2" @click.prevent="submit">
+                  {{ isEdit ? "Edytuj grę" : "Dodaj grę" }}
+                </a>
               </div>
             </form>
           </card>
@@ -105,24 +109,57 @@ export default {
         { name: "Mrok", id: 73 },
         { name: "RPG", id: 72 },
       ],
-      studies: [
-        { name: "Super studio", id: 23 },
-        { name: "Super studio 2", id: 25 },
-      ],
-      series: [
-        { name: "Animal crossing", id: 22 },
-        { name: "Gothic", id: 23 },
-      ],
+      studios: [],
+      series: [],
 
       model: {
-        id: 1,
-        name: "Gothic 3",
-        description:
-          "Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry",
-        studio_id: 23,
-        series_id: 23,
+        name: "",
+        description: "",
+        studio_id: null,
+        series_id: null,
       },
     };
+  },
+  computed: {
+    isEdit() {
+      return this.$route.params.id !== "new";
+    },
+  },
+  methods: {
+    getGame() {
+      this.axios.get(`/games/${this.$route.params.id}`).then((game) => {
+        this.model = { ...this.model, ...game.data };
+      });
+    },
+    submit() {
+      if (this.isEdit) {
+        this.axios
+          .put(`/games/${this.$route.params.id}`, this.model)
+          .then(() => {
+            alert("Gra zaktualizowana");
+          });
+      } else {
+        this.axios.post(`/games`, this.model).then((game) => {
+          console.log(game);
+          this.$router.push({ name: "game", params: { id: game.data.id } });
+        });
+      }
+    },
+    getLists() {
+      this.axios.get(`/studios`).then((studios) => {
+        this.studios = studios.data;
+      });
+      this.axios.get(`/series`).then((series) => {
+        this.series = series.data;
+      });
+    },
+  },
+
+  created() {
+    if (this.isEdit) {
+      this.getGame();
+    }
+    this.getLists();
   },
 };
 </script>

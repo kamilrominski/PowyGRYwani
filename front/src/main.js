@@ -20,9 +20,16 @@ import App from "./App.vue";
 import router from "./router";
 import ArgonDashboard from "./plugins/argon-dashboard";
 import "element-plus/lib/theme-chalk/index.css";
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 const appInstance = createApp(App);
 appInstance.config.devtools = true;
 appInstance.use(router);
 appInstance.use(ArgonDashboard);
+
+
+appInstance.use(VueAxios, axios.create({
+    baseURL: process.env.VUE_APP_API_URL,
+}));
 appInstance.mount("#app");

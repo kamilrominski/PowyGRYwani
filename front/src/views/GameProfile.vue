@@ -18,9 +18,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="img/theme/team-4-800x800.jpg" class="rounded" />
-                  </a>
+                  <img src="img/theme/game.jpg" class="rounded" />
                 </div>
               </div>
             </div>
@@ -33,12 +31,7 @@
               <div class="row">
                 <div class="col">
                   <div
-                    class="
-                      card-profile-stats
-                      d-flex
-                      justify-content-center
-                      mt-md-5
-                    "
+                    class="card-profile-stats d-flex justify-content-center mt-md-5"
                   ></div>
                 </div>
               </div>
@@ -85,6 +78,21 @@
                   <p>{{ model.description }}</p>
                 </h3>
               </div>
+              <div class="row float-right">
+                <router-link
+                  :to="{ name: 'gameEdit', params: { id: model.id } }"
+                  class="btn btn-info mt-2"
+                >
+                  Edytuj grę
+                </router-link>
+
+                <router-link
+                  :to="{ name: 'gameEdit', params: { id: 'new' } }"
+                  class="btn btn-primary mt-2"
+                >
+                  Dodaj grę
+                </router-link>
+              </div>
             </div>
           </div>
         </div>
@@ -97,11 +105,10 @@ export default {
   data() {
     return {
       model: {
-        name: "Gothic 3",
-        description:
-          "Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry",
-        studio: { name: "Super studio", id: "23" },
-        series: { name: "Gothic", id: "24" },
+        name: "[Brak]",
+        description: "[Brak]",
+        studio: { name: "[Brak]", id: "" },
+        series: { name: "[Brak]", id: "" },
         languages: [
           { name: "PL", id: "25" },
           { name: "DE", id: "26" },
@@ -116,6 +123,24 @@ export default {
         ],
       },
     };
+  },
+  methods: {
+    getGame() {
+      this.axios.get(`/games/${this.$route.params.id}`).then((game) => {
+        this.model = { ...this.model, ...game.data };
+
+        this.axios.get(`/studios/${game.data.studio_id}`).then((studio) => {
+          this.model.studio = studio.data;
+        });
+
+        this.axios.get(`/series/${game.data.series_id}`).then((series) => {
+          this.model.series = series.data;
+        });
+      });
+    },
+  },
+  created() {
+    this.getGame();
   },
 };
 </script>
