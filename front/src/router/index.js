@@ -12,6 +12,9 @@ import Register from "../views/Register.vue";
 import GameProfile from "../views/GameProfile.vue";
 import GameEdit from "../views/GameEdit.vue";
 
+import StudioProfile from "../views/StudioProfile.vue";
+import StudioEdit from "../views/StudioEdit.vue";
+
 const routes = [
   {
     path: "/",
@@ -29,14 +32,14 @@ const routes = [
         components: { default: ProfileEdit },
       },
       {
-        path: "/studio",
+        path: "/studio/:id",
         name: "studio",
-        components: { default: Profile },
+        components: { default: StudioProfile },
       },
       {
-        path: "/studioEdit",
+        path: "/studioEdit/:id",
         name: "studioEdit",
-        components: { default: ProfileEdit },
+        components: { default: StudioEdit },
       },
       {
         path: "/game/:id",
