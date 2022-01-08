@@ -18,12 +18,10 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img
-                      src="img/theme/team-4-800x800.jpg"
-                      class="rounded-circle"
-                    />
-                  </a>
+                  <img
+                    src="img/theme/team-4-800x800.jpg"
+                    class="rounded-circle"
+                  />
                 </div>
               </div>
             </div>
@@ -36,12 +34,7 @@
               <div class="row">
                 <div class="col">
                   <div
-                    class="
-                      card-profile-stats
-                      d-flex
-                      justify-content-center
-                      mt-md-5
-                    "
+                    class="card-profile-stats d-flex justify-content-center mt-md-5"
                   >
                     <!-- TODO to implement in api -->
                     <!-- <div>
@@ -53,7 +46,7 @@
               </div>
               <div class="text-center">
                 <h3>
-                  {{ `${model.firstName} ${model.lastName}` }} <br />
+                  {{ `${model.name} ${model.lastName}` }} <br />
                   <span class="font-weight-light">{{ model.email }}</span>
                 </h3>
               </div>
@@ -71,10 +64,20 @@ export default {
     return {
       model: {
         email: "test@test.pl",
-        firstName: "Jan",
+        name: "Jan",
         lastName: "Kowalski",
       },
     };
+  },
+  methods: {
+    getProfile() {
+      this.axios.get(`/users/${this.$route.params.id}`).then((user) => {
+        this.model = { ...this.model, ...user.data };
+      });
+    },
+  },
+  created() {
+    this.getProfile();
   },
 };
 </script>

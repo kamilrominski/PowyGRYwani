@@ -19,7 +19,7 @@ const routes = [
     component: DashboardLayout,
     children: [
       {
-        path: "/profile",
+        path: "/profile/:id",
         name: "profile",
         components: { default: Profile },
       },

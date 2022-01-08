@@ -56,7 +56,7 @@
 
             <div class="row my-4"></div>
             <div class="text-center">
-              <base-button type="primary" class="my-4">
+              <base-button type="primary" class="my-4" @click="submit">
                 Stwórz konto
               </base-button>
             </div>
@@ -82,9 +82,25 @@ export default {
         email: "",
         name: "",
         surname: "",
+        password: "",
         password2: "",
       },
     };
+  },
+  methods: {
+    submit() {
+      if (this.model.password !== this.model.password2) {
+        alert("Podane hasła są inne");
+        return;
+      }
+
+      this.axios.post(`/users/`, this.model).then((profile) => {
+        this.$router.push({
+          name: "profile",
+          params: { id: profile.data.id },
+        });
+      });
+    },
   },
 };
 </script>
