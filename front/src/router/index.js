@@ -10,7 +10,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 
 import GameProfile from "../views/GameProfile.vue";
-import GameEdit from "../views/GameEdit.vue"
+import GameEdit from "../views/GameEdit.vue";
 
 const routes = [
   {
@@ -39,7 +39,7 @@ const routes = [
         components: { default: ProfileEdit },
       },
       {
-        path: "/game",
+        path: "/game/:id",
         name: "game",
         components: { default: GameProfile },
       },

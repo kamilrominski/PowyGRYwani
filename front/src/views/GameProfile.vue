@@ -92,11 +92,10 @@ export default {
   data() {
     return {
       model: {
-        name: "Gothic 3",
-        description:
-          "Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry Opis gry",
-        studio: { name: "Super studio", id: "23" },
-        series: { name: "Gothic", id: "24" },
+        name: "[Brak]",
+        description: "[Brak]",
+        studio: { name: "[Brak]", id: "" },
+        series: { name: "[Brak]", id: "" },
         languages: [
           { name: "PL", id: "25" },
           { name: "DE", id: "26" },
@@ -114,15 +113,15 @@ export default {
   },
   methods: {
     getGame() {
-      this.axios.get("/games/3").then((game) => {
+      this.axios.get(`/games/${this.$route.params.id}`).then((game) => {
         this.model = { ...this.model, ...game.data };
 
         this.axios.get(`/studios/${game.data.studio_id}`).then((studio) => {
-          this.model.studio = studio;
+          this.model.studio = studio.data;
         });
 
         this.axios.get(`/series/${game.data.series_id}`).then((series) => {
-          this.model.series = series;
+          this.model.series = series.data;
         });
       });
     },
