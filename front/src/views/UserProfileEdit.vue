@@ -29,7 +29,7 @@
                       alternative=""
                       label="Imię"
                       input-classes="form-control-alternative"
-                      v-model="model.firstName"
+                      v-model="model.name"
                     />
                   </div>
                   <div class="col-lg-6">
@@ -37,7 +37,7 @@
                       alternative=""
                       label="Nazwisko"
                       input-classes="form-control-alternative"
-                      v-model="model.lastName"
+                      v-model="model.surname"
                     />
                   </div>
                 </div>
@@ -52,7 +52,9 @@
                     />
                   </div>
                 </div>
-                <a href="#!" class="btn btn-info">Edytuj profil</a>
+                <a href="#!" class="btn btn-info" @click.prevent="submit"
+                  >Edytuj profil</a
+                >
               </div>
             </form>
           </card>
@@ -67,12 +69,28 @@ export default {
   data() {
     return {
       model: {
-        username: "",
         email: "",
-        firstName: "",
-        lastName: "",
+        name: "",
+        surname: "",
       },
     };
+  },
+
+  methods: {
+    getProfile() {
+      this.axios.get(`/users/${this.$route.params.id}`).then((profile) => {
+        this.model = { ...this.model, ...profile.data };
+      });
+    },
+    submit() {
+      this.axios.put(`/users/${this.$route.params.id}`, this.model).then(() => {
+        alert("Profil zaktualizowany");
+      });
+    },
+  },
+
+  created() {
+    this.getProfile();
   },
 };
 </script>

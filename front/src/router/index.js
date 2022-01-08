@@ -24,7 +24,7 @@ const routes = [
         components: { default: Profile },
       },
       {
-        path: "/profileEdit",
+        path: "/profileEdit/:id",
         name: "profileEdit",
         components: { default: ProfileEdit },
       },

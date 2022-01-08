@@ -46,9 +46,18 @@
               </div>
               <div class="text-center">
                 <h3>
-                  {{ `${model.name} ${model.lastName}` }} <br />
+                  {{ `${model.name} ${model.surname}` }} <br />
                   <span class="font-weight-light">{{ model.email }}</span>
                 </h3>
+              </div>
+
+              <div class="row float-right">
+                <router-link
+                  :to="{ name: 'profileEdit', params: { id: model.id } }"
+                  class="btn btn-info mt-2"
+                >
+                  Edytuj profil
+                </router-link>
               </div>
             </div>
           </div>
@@ -63,9 +72,9 @@ export default {
   data() {
     return {
       model: {
-        email: "test@test.pl",
-        name: "Jan",
-        lastName: "Kowalski",
+        email: "",
+        name: "",
+        surname: "",
       },
     };
   },
