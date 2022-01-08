@@ -19,7 +19,7 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="img/theme/team-4-800x800.jpg" class="rounded" />
+                    <img src="img/theme/game.jpg" class="rounded" />
                   </a>
                 </div>
               </div>
