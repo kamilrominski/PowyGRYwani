@@ -20,11 +20,15 @@
     </form>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item dropdown">
-        <router-link style="color: white" :to="{ name: 'login' }">
+        <router-link
+          v-if="!displayName"
+          style="color: white"
+          :to="{ name: 'login' }"
+        >
           <i class="ni ni-single-02 mr-2"></i>
           <span>Zaloguj się</span>
         </router-link>
-        <base-dropdown v-if="displayName" class="nav-link pr-0">
+        <base-dropdown v-else class="nav-link pr-0">
           <template v-slot:title>
             <div v class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
@@ -41,16 +45,16 @@
             </div>
           </template>
           <div class="dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome!</h6>
+            <h6 class="text-overflow m-0">Witaj!</h6>
           </div>
           <router-link :to="`/profile/${id}`" class="dropdown-item">
             <i class="ni ni-single-02"></i>
-            <span>My profile</span>
+            <span>Mój profil</span>
           </router-link>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" @click.prevent="logout">
             <i class="ni ni-user-run"></i>
-            <span>Logout</span>
+            <span>Wyjoguj się</span>
           </a>
         </base-dropdown>
       </li>
