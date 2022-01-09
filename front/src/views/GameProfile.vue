@@ -18,7 +18,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <img src="img/theme/game.jpg" class="rounded" />
+                  <img src="img/theme/game.jpg" class="rounded-circle" />
                 </div>
               </div>
             </div>
