@@ -103,6 +103,7 @@
   </div>
 </template>
 <script>
+import { isAdmin } from "../components/authUtils";
 export default {
   data() {
     return {
@@ -168,10 +169,16 @@ export default {
         this.series = series.data;
       });
     },
+    checkAuth() {
+      if (!isAdmin()) {
+        this.$router.push({ name: "login" });
+      }
+    },
   },
 
   created() {
     if (this.isEdit) {
+      this.checkAuth();
       this.getGame();
     }
     this.getLists();

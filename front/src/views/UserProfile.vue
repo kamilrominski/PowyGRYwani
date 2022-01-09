@@ -53,6 +53,7 @@
 
               <div class="row float-right">
                 <router-link
+                  v-if="canEdit()"
                   :to="{ name: 'profileEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
                 >
@@ -67,8 +68,8 @@
   </div>
 </template>
 <script>
+import { isAdmin, getId } from "../components/authUtils";
 export default {
-  name: "user-profile",
   data() {
     return {
       model: {
@@ -83,6 +84,9 @@ export default {
       this.axios.get(`/users/${this.$route.params.id}`).then((user) => {
         this.model = { ...this.model, ...user.data };
       });
+    },
+    canEdit() {
+      return isAdmin() || getId() == this.$route.params.id;
     },
   },
   created() {

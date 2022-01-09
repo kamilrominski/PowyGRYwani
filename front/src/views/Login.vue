@@ -3,7 +3,7 @@
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
         <div class="card-body px-lg-5 py-lg-5">
-          <div>
+          <form @submit.prevent="login">
             <base-input
               formClasses="input-group-alternative mb-3"
               placeholder="Email"
@@ -26,7 +26,7 @@
                 Zaloguj się
               </base-button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div class="row mt-3">
@@ -60,6 +60,9 @@ export default {
           localStorage.setItem("id", user.data.id);
 
           this.$router.push({ name: "profile", params: { id: user.data.id } });
+        })
+        .catch(() => {
+          alert("Zły login lub hasło");
         });
     },
   },

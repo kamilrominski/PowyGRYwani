@@ -44,6 +44,7 @@
 
               <div class="row float-right">
                 <router-link
+                  v-if="isAdmin()"
                   :to="{ name: 'studioEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
                 >
@@ -51,6 +52,7 @@
                 </router-link>
 
                 <router-link
+                  v-if="isUser()"
                   :to="{ name: 'studioEdit', params: { id: 'new' } }"
                   class="btn btn-primary mt-2"
                 >
@@ -65,6 +67,8 @@
   </div>
 </template>
 <script>
+import { isUser, isAdmin } from "../components/authUtils";
+
 export default {
   name: "studio-profile",
   data() {
@@ -81,6 +85,8 @@ export default {
         this.model = { ...this.model, ...studio.data };
       });
     },
+    isUser,
+    isAdmin,
   },
   created() {
     this.getStudio();
