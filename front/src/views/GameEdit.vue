@@ -51,7 +51,12 @@
                   </div>
 
                   <div class="col-lg-6">
-                    <base-checkbox-form label="Język" :options="languages" />
+                    <base-checkbox-form
+                      label="Język"
+                      :options="languages"
+                      :model="model.languages_ids"
+                      @update="model.languages_ids = $event"
+                    />
                   </div>
                 </div>
 
@@ -60,11 +65,18 @@
                     <base-checkbox-form
                       label="Platforma"
                       :options="platforms"
+                      :model="model.platforms_ids"
+                      @update="model.platforms_ids = $event"
                     />
                   </div>
 
                   <div class="col-lg-6">
-                    <base-checkbox-form label="Tag" :options="tags" />
+                    <base-checkbox-form
+                      label="Tag"
+                      :options="tags"
+                      :model="model.tags_ids"
+                      @update="model.tags_ids = $event"
+                    />
                   </div>
                 </div>
 
@@ -117,6 +129,9 @@ export default {
         description: "",
         studio_id: null,
         series_id: null,
+        languages_ids: [25, 26],
+        platforms_ids: [43, 73],
+        tags_ids: [73, 72],
       },
     };
   },
