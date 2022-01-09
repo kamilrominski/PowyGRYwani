@@ -54,7 +54,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" @click.prevent="logout">
             <i class="ni ni-user-run"></i>
-            <span>Wyjoguj się</span>
+            <span>Wyloguj się</span>
           </a>
         </base-dropdown>
       </li>
