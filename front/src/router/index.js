@@ -15,6 +15,9 @@ import GameEdit from "../views/GameEdit.vue";
 import StudioProfile from "../views/StudioProfile.vue";
 import StudioEdit from "../views/StudioEdit.vue";
 
+import Series from "../views/SeriesProfile.vue";
+import SeriesEdit from "../views/SeriesEdit.vue";
+
 const routes = [
   {
     path: "/",
@@ -50,6 +53,16 @@ const routes = [
         path: "/gameEdit/:id",
         name: "gameEdit",
         components: { default: GameEdit },
+      },
+      {
+        path: "/series/:id",
+        name: "series",
+        components: { default: Series },
+      },
+      {
+        path: "/seriesEdit/:id",
+        name: "seriesEdit",
+        components: { default: SeriesEdit },
       },
     ],
   },
