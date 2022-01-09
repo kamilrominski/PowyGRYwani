@@ -21,9 +21,9 @@ export default {
   },
   methods: {
     handleInput(check, id) {
-      const model = [...this.model];
+      const model = [...new Set([...this.model])];
 
-      if (check && !model.includes(id)) {
+      if (check) {
         model.push(id);
       } else {
         const index = model.indexOf(id);
@@ -34,8 +34,7 @@ export default {
 
         model.splice(index, 1);
       }
-      console.log(model);
-      this.$emit("update", model);
+      this.$emit("update", [...new Set(model)]);
     },
   },
 };
