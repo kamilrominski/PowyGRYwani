@@ -4,7 +4,8 @@
   <base-checkbox
     v-for="option in options"
     :key="option.id"
-    v-model="checkboxes[option.id]"
+    :checked="model && !!model.find((id) => id === option.id)"
+    @input="handleInput($event, option.id)"
   >
     {{ option.name }}
   </base-checkbox>
@@ -12,21 +13,29 @@
 <script>
 export default {
   props: {
-    model: [Number, String],
+    model: Array,
     label: {
       type: [String],
     },
     options: Array,
   },
-  data() {
-    return {
-      checkboxes: {},
-    };
-  },
+  methods: {
+    handleInput(check, id) {
+      const model = [...this.model];
 
-  watch: {
-    checkboxes() {
-      this.$emit("update", this.checkboxes);
+      if (check && !model.includes(id)) {
+        model.push(id);
+      } else {
+        const index = model.indexOf(id);
+
+        if (index < 0) {
+          return;
+        }
+
+        model.splice(index, 1);
+      }
+      console.log(model);
+      this.$emit("update", model);
     },
   },
 };
