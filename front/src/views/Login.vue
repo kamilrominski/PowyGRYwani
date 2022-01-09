@@ -22,7 +22,9 @@
             </base-input>
 
             <div class="text-center">
-              <base-button type="primary" class="my-4">Zaloguj się</base-button>
+              <base-button type="primary" class="my-4" @click="login">
+                Zaloguj się
+              </base-button>
             </div>
           </form>
         </div>
@@ -47,6 +49,15 @@ export default {
         password: "",
       },
     };
+  },
+  methods: {
+    login() {
+      // API request here
+      localStorage.setItem("name", "Jan");
+      localStorage.setItem("surname", "Kowalski");
+      localStorage.setItem("isAdmin", true);
+      localStorage.setItem("id", "1");
+    },
   },
 };
 </script>
