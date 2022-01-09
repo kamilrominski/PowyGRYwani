@@ -13,12 +13,17 @@
           placeholder="Szukaj"
           class="input-group-alternative"
           alternative=""
-          addon-right-icon="fas fa-search"
+          addon-right-icon=""
+          v-model="searchQuery"
         >
         </base-input>
+        <i style="cursor: pointer" class="pl-3 fas fa-search" @click="search" />
       </div>
     </form>
-    <ul class="navbar-nav align-items-center d-none d-md-flex">
+    <ul
+      class="navbar-nav align-items-center d-none d-md-flex"
+      style="cursor: pointer"
+    >
       <li class="nav-item dropdown">
         <router-link
           v-if="!displayName"
@@ -73,6 +78,9 @@ export default {
     };
   },
   methods: {
+    search() {
+      this.$router.push({ name: "search", query: { query: this.searchQuery } });
+    },
     toggleSidebar() {
       this.$sidebar.displaySidebar(!this.$sidebar.showSidebar);
     },

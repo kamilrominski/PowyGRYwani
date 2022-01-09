@@ -3,10 +3,7 @@
     <div class="card-header border-0">
       <div class="row align-items-center">
         <div class="col">
-          <h3 class="mb-0">Page visits</h3>
-        </div>
-        <div class="col text-right">
-          <a href="#!" class="btn btn-sm btn-primary">See all</a>
+          <h3 class="mb-0">Wynik wyszukiwania:</h3>
         </div>
       </div>
     </div>
@@ -14,33 +11,22 @@
     <div class="table-responsive">
       <base-table thead-classes="thead-light" :data="tableData">
         <template v-slot:columns>
-          <th>Page name</th>
-          <th>Visitors</th>
-          <th>Unique users</th>
-          <th>Bounce rate</th>
+          <th>Nazwa</th>
+          <th>Typ</th>
+          <th>Opis</th>
         </template>
 
         <template v-slot:default="row">
           <th scope="row">
-            {{ row.item.page }}
+            <router-link :to="{ name: 'gameEdit', params: { id: 'new' } }">
+              {{ row.item.page }}
+            </router-link>
           </th>
           <td>
             {{ row.item.visitors }}
           </td>
-          <td>
+          <td style="overflow-y: auto">
             {{ row.item.unique }}
-          </td>
-          <td>
-            <i
-              class="fas fa-arrow-up text-success mr-3"
-              :class="
-                row.item.bounceRateDirection === 'up'
-                  ? 'text-success'
-                  : 'text-danger'
-              "
-            >
-            </i>
-            {{ row.item.bounceRate }}
           </td>
         </template>
       </base-table>
@@ -49,14 +35,13 @@
 </template>
 <script>
 export default {
-  name: "page-visits-table",
   data() {
     return {
       tableData: [
         {
           page: "/argon/",
           visitors: "4,569",
-          unique: "340",
+          unique: " sd ",
           bounceRate: "46,53%",
           bounceRateDirection: "up",
         },

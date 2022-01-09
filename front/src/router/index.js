@@ -15,10 +15,12 @@ import GameEdit from "../views/GameEdit.vue";
 import StudioProfile from "../views/StudioProfile.vue";
 import StudioEdit from "../views/StudioEdit.vue";
 
+import Search from "../views/SearchPage.vue";
+
 const routes = [
   {
     path: "/",
-    redirect: "/profile",
+    redirect: "/search",
     component: DashboardLayout,
     children: [
       {
@@ -50,6 +52,11 @@ const routes = [
         path: "/gameEdit/:id",
         name: "gameEdit",
         components: { default: GameEdit },
+      },
+      {
+        path: "/search",
+        name: "search",
+        components: { default: Search },
       },
     ],
   },
