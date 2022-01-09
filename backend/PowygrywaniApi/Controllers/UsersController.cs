@@ -77,7 +77,15 @@ namespace PowygrywaniApi.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            var searchUser = _context.users.Where(x => x.Email == user.Email)
+                .FirstOrDefault();
+
+            if (searchUser != null)
+            {
+                return BadRequest();
+            }
             _context.users.Add(user);
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
@@ -97,6 +105,25 @@ namespace PowygrywaniApi.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+
+        // GET: api/Users/email/pass
+        [HttpGet("{email}/{password}")]
+        public async Task<ActionResult<User>> GetLoginResults(string email, string password)
+        {
+            var user = _context.users.Where(x => x.Email == email)
+                .FirstOrDefault();
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+            if (user.Password != password)
+            {
+                return Unauthorized();
+            }
+
+            return user;
         }
 
         private bool UserExists(int id)
