@@ -64,6 +64,7 @@
   </div>
 </template>
 <script>
+import { getId, isAdmin } from "../components/authUtils";
 export default {
   name: "user-profile",
   data() {
@@ -87,9 +88,15 @@ export default {
         alert("Profil zaktualizowany");
       });
     },
+    checkAuth() {
+      if (!isAdmin() && getId() != this.$route.params.id) {
+        this.$router.push({ name: "login" });
+      }
+    },
   },
 
   created() {
+    this.checkAuth();
     this.getProfile();
   },
 };

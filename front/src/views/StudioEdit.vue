@@ -55,6 +55,7 @@
   </div>
 </template>
 <script>
+import { isAdmin } from "../components/authUtils";
 export default {
   name: "user-profile",
   data() {
@@ -92,10 +93,16 @@ export default {
         });
       }
     },
+    checkAuth() {
+      if (!isAdmin()) {
+        this.$router.push({ name: "login" });
+      }
+    },
   },
 
   created() {
     if (this.isEdit) {
+      this.checkAuth();
       this.getStudio();
     }
   },

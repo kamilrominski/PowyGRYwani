@@ -3,7 +3,7 @@
     <div class="col-lg-5 col-md-7">
       <div class="card bg-secondary shadow border-0">
         <div class="card-body px-lg-5 py-lg-5">
-          <form role="form">
+          <form @submit.prevent="login">
             <base-input
               formClasses="input-group-alternative mb-3"
               placeholder="Email"
@@ -22,7 +22,9 @@
             </base-input>
 
             <div class="text-center">
-              <base-button type="primary" class="my-4">Zaloguj się</base-button>
+              <base-button type="primary" class="my-4" @click="login">
+                Zaloguj się
+              </base-button>
             </div>
           </form>
         </div>
@@ -39,7 +41,6 @@
 </template>
 <script>
 export default {
-  name: "login",
   data() {
     return {
       model: {
@@ -47,6 +48,23 @@ export default {
         password: "",
       },
     };
+  },
+  methods: {
+    login() {
+      this.axios
+        .get(`/users/${this.model.email}/${this.model.password}`)
+        .then((user) => {
+          localStorage.setItem("name", user.data.name);
+          localStorage.setItem("surname", user.data.surname);
+          localStorage.setItem("isAdmin", user.data.isAdmin);
+          localStorage.setItem("id", user.data.id);
+
+          this.$router.push({ name: "profile", params: { id: user.data.id } });
+        })
+        .catch(() => {
+          alert("Zły login lub hasło");
+        });
+    },
   },
 };
 </script>

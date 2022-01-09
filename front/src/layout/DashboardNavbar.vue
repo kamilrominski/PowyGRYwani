@@ -6,13 +6,7 @@
     expand
   >
     <form
-      class="
-        navbar-search navbar-search-dark
-        form-inline
-        mr-3
-        d-none d-md-flex
-        ml-lg-auto
-      "
+      class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto"
     >
       <div class="form-group mb-0">
         <base-input
@@ -26,9 +20,17 @@
     </form>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item dropdown">
-        <base-dropdown class="nav-link pr-0">
+        <router-link
+          v-if="!displayName"
+          style="color: white"
+          :to="{ name: 'login' }"
+        >
+          <i class="ni ni-single-02 mr-2"></i>
+          <span>Zaloguj się</span>
+        </router-link>
+        <base-dropdown v-else class="nav-link pr-0">
           <template v-slot:title>
-            <div class="media align-items-center">
+            <div v class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
                 <img
                   alt="Image placeholder"
@@ -36,22 +38,24 @@
                 />
               </span>
               <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm font-weight-bold">Jessica Jones</span>
+                <span class="mb-0 text-sm font-weight-bold">
+                  {{ displayName }}
+                </span>
               </div>
             </div>
           </template>
           <div class="dropdown-header noti-title">
-            <h6 class="text-overflow m-0">Welcome!</h6>
+            <h6 class="text-overflow m-0">Witaj!</h6>
           </div>
-          <router-link to="/profile" class="dropdown-item">
+          <router-link :to="`/profile/${id}`" class="dropdown-item">
             <i class="ni ni-single-02"></i>
-            <span>My profile</span>
+            <span>Mój profil</span>
           </router-link>
           <div class="dropdown-divider"></div>
-          <router-link to="/profile" class="dropdown-item">
+          <a class="dropdown-item" @click.prevent="logout">
             <i class="ni ni-user-run"></i>
-            <span>Logout</span>
-          </router-link>
+            <span>Wyloguj się</span>
+          </a>
         </base-dropdown>
       </li>
     </ul>
@@ -64,6 +68,8 @@ export default {
       activeNotifications: false,
       showMenu: false,
       searchQuery: "",
+      displayName: "",
+      userId: "",
     };
   },
   methods: {
@@ -76,6 +82,22 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu;
     },
+    logout() {
+      localStorage.setItem("name", "");
+      localStorage.setItem("surname", "");
+      localStorage.setItem("id", null);
+      localStorage.setItem("isAdmin", false);
+      this.$router.push({ name: "login" });
+    },
+  },
+  created() {
+    const name = localStorage.getItem("name");
+    const surname = localStorage.getItem("surname");
+    this.id = localStorage.getItem("id");
+
+    if (name && surname) {
+      this.displayName = `${name} ${surname}`;
+    }
   },
 };
 </script>

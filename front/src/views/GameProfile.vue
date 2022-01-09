@@ -18,7 +18,7 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <img src="img/theme/game.jpg" class="rounded" />
+                  <img src="img/theme/game.jpg" class="rounded-circle" />
                 </div>
               </div>
             </div>
@@ -80,6 +80,7 @@
               </div>
               <div class="row float-right">
                 <router-link
+                  v-if="isAdmin()"
                   :to="{ name: 'gameEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
                 >
@@ -87,6 +88,7 @@
                 </router-link>
 
                 <router-link
+                  v-if="isUser()"
                   :to="{ name: 'gameEdit', params: { id: 'new' } }"
                   class="btn btn-primary mt-2"
                 >
@@ -101,6 +103,7 @@
   </div>
 </template>
 <script>
+import { isUser, isAdmin } from "../components/authUtils";
 export default {
   data() {
     return {
@@ -138,6 +141,8 @@ export default {
         });
       });
     },
+    isUser,
+    isAdmin,
   },
   created() {
     this.getGame();
