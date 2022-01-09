@@ -20,6 +20,10 @@
     </form>
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item dropdown">
+        <router-link style="color: white" :to="{ name: 'login' }">
+          <i class="ni ni-single-02 mr-2"></i>
+          <span>Zaloguj się</span>
+        </router-link>
         <base-dropdown v-if="displayName" class="nav-link pr-0">
           <template v-slot:title>
             <div v class="media align-items-center">
