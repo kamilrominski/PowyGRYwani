@@ -94,10 +94,9 @@ export default {
         return;
       }
 
-      this.axios.post(`/users/`, this.model).then((profile) => {
+      this.axios.post(`/users/`, this.model).then(() => {
         this.$router.push({
-          name: "profile",
-          params: { id: profile.data.id },
+          name: "login",
         });
       });
     },
