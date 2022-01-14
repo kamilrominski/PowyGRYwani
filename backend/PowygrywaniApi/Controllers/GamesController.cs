@@ -99,6 +99,33 @@ namespace PowygrywaniApi.Controllers
             return NoContent();
         }
 
+        //GET: api/Games/Studio/id
+        [HttpGet("Studio/{id}")]
+        public async Task<ActionResult<List<Game>>> GetGameByStudioId(int id)
+        {
+            var userList = _context.games.Where(x => x.Studio_id == id).ToList();
+
+            if (userList.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return userList;
+        }
+
+        // GET: api/Games/Series/id
+        [HttpGet("Series/{id}")]
+        public async Task<ActionResult<List<Game>>> GetGamesBySeriesId(int id)
+        {
+            var userList = _context.games.Where(x => x.Series_id == id).ToList();
+
+            if(userList.Count == 0)
+            {
+                return NotFound();
+            }
+            return userList;
+        }
+
         private bool GameExists(int id)
         {
             return _context.games.Any(e => e.Id == id);
