@@ -19,8 +19,9 @@ namespace PowygrywaniApi.Controllers
         {
             List<Game> games = GetGames(searchString);
             List<Studio> studios = GetStudios(searchString);
+            List<Series> series = GetSeries(searchString);
 
-            List<object> _result = games.Cast<object>().Concat(studios).ToList();
+            List<object> _result = games.Cast<object>().Concat(studios).Concat(series).ToList();
 
             return _result;
         }
@@ -48,6 +49,20 @@ namespace PowygrywaniApi.Controllers
                 studio.Type = "studio";
 
             return studioList;
+        }
+
+        [HttpGet("series/{searchString}")]
+        public List<Series> GetSeries(string searchString)
+        {
+            var seriesList = _context.series.Where(o => o.Name.Contains(searchString)).ToList();
+
+            if (seriesList.Count == 0)
+                return new List<Series>();
+
+            foreach (var studio in seriesList)
+                studio.Type = "series";
+
+            return seriesList;
         }
 
     }
