@@ -53,8 +53,8 @@
                       class="pr-1"
                       :key="game.id"
                       :to="{ name: 'game', params: { id: game.id } }"
-                      >{{ game.name }},</router-link
-                    >
+                      >{{ game.name }},
+                    </router-link>
                   </div>
                 </div>
               </div>
