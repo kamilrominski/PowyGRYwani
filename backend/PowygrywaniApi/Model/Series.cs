@@ -9,5 +9,7 @@ namespace PowygrywaniApi.Model
     public class Series : BaseModelTemplate
     {
         public string Description { get; set; }
+        public List<Game>? Games { get; set; }
+
     }
 }

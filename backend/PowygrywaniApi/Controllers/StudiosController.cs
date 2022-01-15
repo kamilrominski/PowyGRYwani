@@ -38,6 +38,8 @@ namespace PowygrywaniApi.Controllers
                 return NotFound();
             }
 
+            studio.Games = _context.games.Where(g => g.Studio_id.Equals(studio.Id)).ToList();
+
             return studio;
         }
 
