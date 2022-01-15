@@ -12,7 +12,7 @@
     </base-header>
 
     <div class="container-fluid mt--7">
-      <page-visits-table />
+      <page-visits-table class="" />
     </div>
   </div>
 </template>
