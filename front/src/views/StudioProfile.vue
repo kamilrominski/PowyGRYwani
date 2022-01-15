@@ -47,7 +47,7 @@
               <div class="row">
                 <div class="col">
                   <div class="card-profile-stats d-flex justify-content-center">
-                    <b class="pr-1">Gry z studia:</b>
+                    <b class="pr-1">Gry studia:</b>
                     <router-link
                       v-for="game in model.games"
                       class="pr-1"
