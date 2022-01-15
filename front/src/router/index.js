@@ -16,6 +16,8 @@ import StudioProfile from "../views/StudioProfile.vue";
 import StudioEdit from "../views/StudioEdit.vue";
 
 import Search from "../views/SearchPage.vue";
+import Series from "../views/SeriesProfile.vue";
+import SeriesEdit from "../views/SeriesEdit.vue";
 
 const routes = [
   {
@@ -57,6 +59,16 @@ const routes = [
         path: "/search",
         name: "search",
         components: { default: Search },
+      },
+      {
+        path: "/series/:id",
+        name: "series",
+        components: { default: Series },
+      },
+      {
+        path: "/seriesEdit/:id",
+        name: "seriesEdit",
+        components: { default: SeriesEdit },
       },
     ],
   },
