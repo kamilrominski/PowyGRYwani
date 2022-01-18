@@ -42,6 +42,23 @@
                 </h3>
               </div>
 
+              <hr />
+
+              <div class="row">
+                <div class="col">
+                  <div class="card-profile-stats d-flex justify-content-center">
+                    <b class="pr-1">Gry studia:</b>
+                    <router-link
+                      v-for="game in model.games"
+                      class="pr-1"
+                      :key="game.id"
+                      :to="{ name: 'game', params: { id: game.id } }"
+                      >{{ game.name }},
+                    </router-link>
+                  </div>
+                </div>
+              </div>
+
               <div class="row float-right">
                 <router-link
                   v-if="isAdmin()"
@@ -76,6 +93,7 @@ export default {
       model: {
         name: "",
         description: "",
+        games: [],
       },
     };
   },

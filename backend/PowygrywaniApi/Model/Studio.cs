@@ -9,5 +9,6 @@ namespace PowygrywaniApi.Model
     public class Studio : BaseModelTemplate
     {
         public string Description { get; set; }
+        public List<Game>? Games { get; set; }
     }
 }

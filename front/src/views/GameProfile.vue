@@ -47,9 +47,14 @@
 
                 <h3>
                   Studio:
-                  <span class="font-weight-light">
-                    {{ model.studio.name }}
-                  </span>
+                  <router-link
+                    class="font-weight-light"
+                    :to="{ name: 'studio', params: { id: model.studio.id } }"
+                  >
+                    <span>
+                      {{ model.studio.name }}
+                    </span>
+                  </router-link>
                 </h3>
 
                 <h3>
@@ -68,9 +73,14 @@
 
                 <h3>
                   Seria:
-                  <span class="font-weight-light">
-                    {{ model.series.name }}
-                  </span>
+                  <router-link
+                    class="font-weight-light"
+                    :to="{ name: 'series', params: { id: model.series.id } }"
+                  >
+                    <span>
+                      {{ model.series.name }}
+                    </span>
+                  </router-link>
                 </h3>
 
                 <h3>
@@ -110,8 +120,8 @@ export default {
       model: {
         name: "[Brak]",
         description: "[Brak]",
-        studio: { name: "[Brak]", id: "" },
-        series: { name: "[Brak]", id: "" },
+        studio: { name: "[Brak]", id: "new" },
+        series: { name: "[Brak]", id: "new" },
         languages: [
           { name: "PL", id: "25" },
           { name: "DE", id: "26" },
