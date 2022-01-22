@@ -28,6 +28,8 @@
                       label="Nazwa"
                       input-classes="form-control-alternative"
                       v-model="model.name"
+                      :error="this.model.name.length < 3 && nameError"
+                      :required="true"
                     />
                   </div>
                 </div>
@@ -64,6 +66,7 @@ export default {
         name: "",
         description: "",
       },
+      nameError: "",
     };
   },
 
@@ -81,6 +84,11 @@ export default {
     },
 
     submit() {
+      if (this.model.name.length < 3) {
+        this.nameError = "Minimalna długość: 3";
+        return;
+      }
+
       if (this.isEdit) {
         this.axios
           .put(`/series/${this.$route.params.id}`, this.model)

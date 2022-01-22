@@ -28,6 +28,8 @@
                       label="Nazwa"
                       input-classes="form-control-alternative"
                       v-model="model.name"
+                      :required="true"
+                      :error="this.model.name.length < 3 && nameError"
                     />
                   </div>
                   <div class="col-lg-6">
@@ -124,12 +126,12 @@ export default {
       ],
       studios: [],
       series: [],
-
+      nameError: "",
       model: {
         name: "",
         description: "",
-        studio_id: null,
-        series_id: null,
+        studio_id: undefined,
+        series_id: undefined,
         languages_ids: [25, 26],
         platforms_ids: [43, 73],
         tags_ids: [73, 72],
@@ -148,6 +150,11 @@ export default {
       });
     },
     submit() {
+      if (this.model.name.length < 3) {
+        this.nameError = "Minimalna długość: 3";
+        return;
+      }
+
       if (this.isEdit) {
         this.axios
           .put(`/games/${this.$route.params.id}`, this.model)
