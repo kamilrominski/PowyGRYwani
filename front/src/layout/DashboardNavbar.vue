@@ -15,6 +15,7 @@
           alternative=""
           addon-right-icon=""
           v-model="searchQuery"
+          @keypress.enter="search"
         >
         </base-input>
         <i style="cursor: pointer" class="pl-3 fas fa-search" @click="search" />
