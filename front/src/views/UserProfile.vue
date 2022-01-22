@@ -68,7 +68,8 @@
   </div>
 </template>
 <script>
-import { isAdmin, getId } from "../components/authUtils";
+import { isUser, isAdmin, getId } from "../components/authUtils";
+
 export default {
   data() {
     return {
@@ -80,6 +81,7 @@ export default {
     };
   },
   methods: {
+    isUser,
     getProfile() {
       this.axios.get(`/users/${this.$route.params.id}`).then((user) => {
         this.model = { ...this.model, ...user.data };

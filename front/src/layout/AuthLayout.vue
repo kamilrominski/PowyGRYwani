@@ -37,7 +37,7 @@
           <li class="nav-item">
             <router-link class="nav-link nav-link-icon" to="/register">
               <i class="ni ni-circle-08"></i>
-              <span class="nav-link-inner--text">Register</span>
+              <span class="nav-link-inner--text">Rejestracja</span>
             </router-link>
           </li>
         </ul>
