@@ -40,6 +40,12 @@
               <span class="nav-link-inner--text">Rejestracja</span>
             </router-link>
           </li>
+          <li>
+            <router-link class="nav-link nav-link-icon" to="/search">
+              <i class="fas fa-search"></i>
+              <span class="nav-link-inner--text">Wyszukiwarka</span>
+            </router-link>
+          </li>
         </ul>
       </template>
     </base-nav>
