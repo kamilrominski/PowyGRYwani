@@ -61,6 +61,14 @@
 
               <div class="row float-right">
                 <router-link
+                  v-if="isUser()"
+                  :to="{ name: 'studioEdit', params: { id: 'new' } }"
+                  class="btn btn-primary mt-2"
+                >
+                  Dodaj studio
+                </router-link>
+
+                <router-link
                   v-if="isAdmin()"
                   :to="{ name: 'studioEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
@@ -68,13 +76,13 @@
                   Edytuj studio
                 </router-link>
 
-                <router-link
-                  v-if="isUser()"
-                  :to="{ name: 'studioEdit', params: { id: 'new' } }"
-                  class="btn btn-primary mt-2"
+                <button
+                  v-if="isAdmin()"
+                  class="btn btn-danger mt-2"
+                  @click="deleteStudio"
                 >
-                  Dodaj studio
-                </router-link>
+                  Usuń studio
+                </button>
               </div>
             </div>
           </div>
@@ -102,6 +110,13 @@ export default {
       this.axios.get(`/studios/${this.$route.params.id}`).then((studio) => {
         this.model = { ...this.model, ...studio.data };
       });
+    },
+    deleteStudio() {
+      if (confirm("Potwierdź usunięcie")) {
+        this.axios.delete(`/studios/${this.$route.params.id}`).then(() => {
+          this.$router.push({ name: "search" });
+        });
+      }
     },
     isUser,
     isAdmin,

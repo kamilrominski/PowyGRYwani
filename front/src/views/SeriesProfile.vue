@@ -60,6 +60,14 @@
 
               <div class="row float-right">
                 <router-link
+                  v-if="isUser()"
+                  :to="{ name: 'seriesEdit', params: { id: 'new' } }"
+                  class="btn btn-primary mt-2"
+                >
+                  Dodaj serię
+                </router-link>
+
+                <router-link
                   v-if="isAdmin()"
                   :to="{ name: 'seriesEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
@@ -67,13 +75,13 @@
                   Edytuj serię
                 </router-link>
 
-                <router-link
-                  v-if="isUser()"
-                  :to="{ name: 'seriesEdit', params: { id: 'new' } }"
-                  class="btn btn-primary mt-2"
+                <button
+                  v-if="isAdmin()"
+                  class="btn btn-danger mt-2"
+                  @click="deleteSeries"
                 >
-                  Dodaj serię
-                </router-link>
+                  Usuń serię
+                </button>
               </div>
             </div>
           </div>
@@ -100,6 +108,13 @@ export default {
       this.axios.get(`/series/${this.$route.params.id}`).then((series) => {
         this.model = { ...this.model, ...series.data };
       });
+    },
+    deleteSeries() {
+      if (confirm("Potwierdź usunięcie")) {
+        this.axios.delete(`/series/${this.$route.params.id}`).then(() => {
+          this.$router.push({ name: "search" });
+        });
+      }
     },
     isUser,
     isAdmin,
