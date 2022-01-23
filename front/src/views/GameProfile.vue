@@ -90,6 +90,14 @@
               </div>
               <div class="row float-right">
                 <router-link
+                  v-if="isUser()"
+                  :to="{ name: 'gameEdit', params: { id: 'new' } }"
+                  class="btn btn-primary mt-2"
+                >
+                  Dodaj grę
+                </router-link>
+
+                <router-link
                   v-if="isAdmin()"
                   :to="{ name: 'gameEdit', params: { id: model.id } }"
                   class="btn btn-info mt-2"
@@ -97,13 +105,13 @@
                   Edytuj grę
                 </router-link>
 
-                <router-link
-                  v-if="isUser()"
-                  :to="{ name: 'gameEdit', params: { id: 'new' } }"
-                  class="btn btn-primary mt-2"
+                <button
+                  v-if="isAdmin()"
+                  class="btn btn-danger mt-2"
+                  @click="deleteGame"
                 >
-                  Dodaj grę
-                </router-link>
+                  Usuń grę
+                </button>
               </div>
             </div>
           </div>
@@ -150,6 +158,13 @@ export default {
           this.model.series = series.data;
         });
       });
+    },
+    deleteGame() {
+      if (confirm("Potwierdź usunięcie")) {
+        this.axios.delete(`/games/${this.$route.params.id}`).then(() => {
+          this.$router.push({ name: "search" });
+        });
+      }
     },
     isUser,
     isAdmin,
